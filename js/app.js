@@ -114,10 +114,11 @@ function updateTask(taskID, taskName, parentList) {
             console.log(err)
         } else {
             let tmpList = new TaskList(doc.name, doc.tasks)
+            console.log(tmpList)
             for (let i = 0; i <= tmpList.tasks.length; i++) {
                 if (tmpList.tasks[i].name == taskName) {
-                    tmpList.task[i].completed = document.getElementById(taskID).checked
-                    console.log(tmpList.task[i])
+                    tmpList.tasks[i].completed = document.getElementById(taskID).checked
+                    console.log(tmpList.tasks[i])
                     db.update({name: doc.name}, tmpList)
                     break
                 } else {
@@ -169,11 +170,11 @@ class Task {
     printSelf(element) {
         let checked = (this.completed == true) ? "checked" : ""
         let parent = element.parentElement.id
-        let uniqueName = this.name+parent;
+        let uniqueName = (this.name+parent).replace(/\s/g, '');;
 
         element.innerHTML += `
             <li class="list-item">
-                <input type="checkbox" `+checked+` id='`+uniqueName+`-check' onclick="updateTask('`+uniqueName+`', ',`+this.name+`, '`+parent+`')">
+                <input type="checkbox" `+checked+` id='`+uniqueName+`' onclick="updateTask('`+uniqueName+`', '`+this.name+`', '`+parent+`')">
                 <p>`+this.name+`</p>
                 <button onclick="deleteTaskFromList('`+this.name+`', '`+parent+`')">-</button>
             </li>
