@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+:root {
+    --color-black-primary: #f9f9f9;
+    --color-gray-primary: #343a40;
+    --color-black-secondary: #474d54;
+    --color-app-primary: #0d6efd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+    color: var(--color-black-primary);
+    font-family: 'Nunito';
+    line-height: 1em;
+
+    appearance: none;
+    -webkit-appearance: none;
+    
+    box-sizing: border-box;
+}
+
+#sidebar {
+    width: 66px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 66px;
+    background: var(--color-gray-primary);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+}
+
+#footer {
+    width: 100%;
+    height: 66px;
+    padding: 0 10px;
+    position: fixed;
+    left: 66px;
+    right: 0;
+    bottom: 0;
+    background: var(--color-gray-primary);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    z-index: 800;
+}
+
+#content {
+    width: 100%;
+    min-height: calc(100vh - 66px);
+    margin-bottom: 66px;
+    background: var(--color-black-secondary);
+    display: flex;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#list-space {
+    width: 100%;
+    height: max-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 76px;
+    padding-right: 10px;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tasklist {
+    width: 49%;
+    height: auto;
+    padding: 12px 10px;
+    border-color: var(--color-gray-primary);
+    border-radius: 8px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tasklist-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.list-item input[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    outline: none;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms;
+}
+.list-item input[type='checkbox']:hover {
+    cursor: pointer;
+}
+.list-item input[type='checkbox']:focus {
+    outline: none
+}
+.list-item input[type='checkbox']::after {
+    content: '\2714';
+    font-size: .85em;
+    color: transparent;
+}
+.list-item input[type='checkbox']:checked {
+    background: var(--color-app-primary);
+}
+.list-item input[type='checkbox']:checked::after {
+    color: var(--color-black-primary);
+}
+.list-item button {
+    width: 16px;
+    height: 16px;
+    padding: 2px 4px;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-group {
+    margin-top: auto;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.button-group input {
+    width: 100%;
+}
+.button-group button {
+    flex: 1;
+}
+.button-group button:nth-child(even) {
+    border-bottom-left-radius: 8px;
+}
+.button-group button:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+button {
+    background: var(--color-gray-primary);
+    font-weight: bold;
+    padding: 6px 8px;
+    border: 1px solid var(--color-black-primary);
+    outline: 1px solid transparent;
+    transition: all 300ms;
+}
+button:hover {
+    background: var(--color-black-primary);
+    color: var(--color-gray-primary);
+    border: 1px solid var(--color-black-primary);
+    cursor: pointer;
+}
+button:focus {
+    outline: 1px solid blue;
+}
+
+input {
+    color: var(--color-gray-primary);
+    font-weight: bold;
+    padding: 2px 4px;
+    border: 1px solid var(--color-black-primary);
+    outline: 1px solid transparent;
+    border-radius: 0;
+    transition: all 300ms;
+}
+input::placeholder {
+    color: gray;
+    font-style: italic;
+}
+input:focus {
+    outline: 1px solid blue;
+}
+
+@media only screen and (min-width: 840px) {
+    .tasklist {
+        width: 24%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .tasklist {
+        width: 100%;
+    }
+}
